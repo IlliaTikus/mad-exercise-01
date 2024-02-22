@@ -44,7 +44,45 @@ can have it, but Kotlin helps you avoid it occasionally.
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
-<span style="color:blue">Provide your answer here!</span>
+Lambdas Expressions are essentially anonymous functions that we can treat as values – we can, for
+example, pass them as arguments to methods, return them, or do any other thing we could do with a
+normal object. To define a lambda, we need to stick to the syntax, which involves enclosing the
+lambda within curly braces, specifying its parameters (with optional type annotations) inside these
+braces, followed by an arrow (->) and then the lambda's body. The return value of the lambda is the
+last expression inside its body if it's not returning Unit. For example, a lambda expression to sum
+two integers could be defined as:
+
+```kotlin 
+val sum = { x: Int, y: Int -> x + y }
+```
+
+In Kotlin, a function which can accept a function as parameter or can return a function is called
+Higher-Order function. Instead of Integer, String or Array as a parameter to function, we will pass
+anonymous function or lambdas. Frequently, lambdas are passed as parameter in Kotlin functions for
+the convenience.
+
+For instance, a higher-order function that accepts a lambda expression as a parameter and invokes it
+could look like this:
+
+```kotlin 
+// lambda expression
+var lambda = { println("Hello world!") }
+
+// higher-order function
+fun higherfunc(lmbd: () -> Unit) { // accepting lambda as parameter
+    lmbd()                               //invokes lambda expression
+}
+fun main(args: Array<String>) {
+//invoke higher-order function
+    higherfunc(lambda)                 // passing lambda as parameter
+}
+```
+
+Storing a function in a variable allows for flexible passing of behavior as data. This enables
+defining functions that can be dynamically changed at runtime, passed as arguments to other
+functions, or stored for later use, enabling highly dynamic and expressive programming patterns.
+This approach is especially helpful in event-driven programming, callbacks, and when implementing
+generic algorithms that operate on functions provided by the user.
 
 ### Provide a solution for the following number guessing game inside `App.kt`. (3 points)
 
