@@ -19,19 +19,28 @@
 of null reference exceptions, a common issue in many programming languages, including Java. In Java,
 accessing a member of a null reference results in a NullPointerException. Kotlin addresses this
 problem by differentiating between types that can hold null values (nullable types) and those that
-cannot (non-null types). Nullable types in Kotlin are declared by appending a question mark to the type name. For instance, to declare a variable that can hold a null value, you would write:
+cannot (non-null types). Nullable types in Kotlin are declared by appending a question mark to the
+type name. For instance, to declare a variable that can hold a null value, you would write:
+</span>
+
+```kotlin 
 var b: String? = "abc" // can be set to null
 b = null // This is allowed because b is a nullable type
 print(b)
-</span>
+```
 
-
-> Note: you can also use code snippets to illustrate your answer.
+The variable 'b' is of type 'String?', which means it can hold either a string value or null. On the
+other hand, the not-null assertion operator (!!) converts any value to a non-nullable type and
+throws an exception if the value is null. If the value is null, using the !! operator will throw a
+NullPointerException (NPE). For example:
 
 ```kotlin 
-// example code snippet
-val a: String = "value" // non-null type
+val l = b!!.length
 ```
+
+In this case, b!! asserts that b is not null: if b is indeed not null, l will be assigned the length
+of b. If b is null, however, a NullPointerException will be thrown. Thus, if you want an NPE, you
+can have it, but Kotlin helps you avoid it occasionally.
 
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
